@@ -8,7 +8,7 @@
 #include <QDesktopWidget>
 
 #include "window.h"
-#include "wrapper.h"
+//#include "wrapper.h"
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
@@ -26,11 +26,12 @@ int main(int argc, char *argv[]) {
     window.showMaximized();
   }
 
+/*
   std::vector<double> pos;
   std::vector<double> rot;
   openmapper_wrapper::Wrapper wrapper;
   wrapper.GetPose(pos, rot);
   std::cout << "tata " << pos[0] << " " << pos[1] << " " << '\n';
-
+*/
   return app.exec();
 }

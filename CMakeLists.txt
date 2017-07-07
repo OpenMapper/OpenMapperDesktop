@@ -14,7 +14,7 @@ find_package(Qt5OpenGL REQUIRED)
 
 INCLUDE_DIRECTORIES(
   ${OPENGL_INCLUDE_DIRS}
-  ${CMAKE_CURRENT_LIST_DIR}/OpenMapper/include
+  # ${CMAKE_CURRENT_LIST_DIR}/../OpenMapper/include
 )
 
 SET(OMD_LIB_SOURCES
@@ -47,7 +47,7 @@ target_link_libraries(${PROJECT_NAME}_main
   Qt5::Widgets
   Qt5::Core
   Qt5::OpenGL
-  ${PROJECT_SOURCE_DIR}/OpenMapper/lib/libOpenMapper.a
+  # ${PROJECT_SOURCE_DIR}/OpenMapper/lib/libOpenMapper.a
 )
 
 # generate proper GUI program on specified platform.

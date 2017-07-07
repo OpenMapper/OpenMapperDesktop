@@ -7,12 +7,6 @@ apt:
   sources:
     - ubuntu-toolchain-r-test
   packages:
-    - gcc-6
-    - g++-6
-    - cmake
-    - python-dev
-    - python-numpy
-    - libeigen3-dev
     - freeglut3-dev # OpenGL
 before_script:
     - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'

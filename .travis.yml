@@ -9,14 +9,18 @@ apt:
   packages:
     - freeglut3-dev # OpenGL
 before_script:
+    - sudo apt-get remove gcc
+    - sudo apt-get remove g++
     - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
     - sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
     - sudo apt-get update
+    - sudo apt-get install gcc-6 g++-6
     - sudo apt-get install ros-indigo-ros-base
     - sudo rosdep init
     - rosdep update
     - source /opt/ros/indigo/setup.bash
-    - sudo apt-get install ros-indigo-opencv3 ros-indigo-eigen-conversions
+    - sudo apt-get install qt5-default qt5base-examples
+    #- sudo apt-get install ros-indigo-opencv3 ros-indigo-eigen-conversions
 
 script:
     # Check versions of gcc, g++ and cmake

@@ -1,0 +1,3 @@
+[submodule "src/OpenMapper"]
+	path = src/OpenMapper
+	url = ../OpenMapper.git

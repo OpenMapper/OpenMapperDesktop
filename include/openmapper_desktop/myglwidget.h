@@ -1,4 +1,4 @@
-// myglwidget.h
+// (c) 2017 OpenMapper
 
 #ifndef MYGLWIDGET_H
 #define MYGLWIDGET_H

@@ -1,4 +1,4 @@
-// window.h
+// (c) 2017 OpenMapper
 
 #ifndef WINDOW_H
 #define WINDOW_H

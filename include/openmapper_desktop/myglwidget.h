@@ -1,7 +1,7 @@
 // (c) 2017 OpenMapper
 
-#ifndef MYGLWIDGET_H
-#define MYGLWIDGET_H
+#ifndef OPENMAPPER_DESKTOP_MYGLWIDGET_H_
+#define OPENMAPPER_DESKTOP_MYGLWIDGET_H_
 
 #include <QGLWidget>
 
@@ -47,5 +47,5 @@ private:
     QPoint lastPos;
 };
 
-#endif // MYGLWIDGET_H
+#endif // OPENMAPPER_DESKTOP_MYGLWIDGET_H_
 

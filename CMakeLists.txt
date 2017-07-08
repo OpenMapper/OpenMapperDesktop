@@ -55,17 +55,17 @@ SET(OMD_LIB_SRC_DIR
 FILE(GLOB_RECURSE OMD_LIB_HEADERS "${OMD_LIB_HEADER_DIR}/*.h")
 FILE(GLOB_RECURSE OMD_LIB_SOURCES "${OMD_LIB_SRC_DIR}/*.cc")
 
+
 SET(OMD_LIB_RESOURCES
   ${OMD_LIB_SOURCES}
   ${OMD_LIB_HEADERS}
 )
 
-# compile
 ADD_EXECUTABLE(${PROJECT_NAME}_main
+  ${OMD_LIB_SRC_DIR}/main.cpp
   ${OMD_LIB_RESOURCES}
 )
 
-# Build it (link libraries)
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}_main
   Qt5::Widgets
   Qt5::Core
@@ -77,8 +77,22 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME}_main
   debug ${G2O_LIB} optimized ${G2O_LIB}
   debug ${ORB_SLAM2_LIB} optimized ${ORB_SLAM2_LIB}
   debug ${OPENMAPPER_LIB} optimized ${OPENMAPPER_LIB}
-
 )
+
+# ADD_EXECUTABLE(${PROJECT_NAME}_main2
+#   ${OMD_LIB_SRC_DIR}/main_desktop.cpp
+# )
+# 
+# TARGET_LINK_LIBRARIES(${PROJECT_NAME}_main2
+#   debug ${MINI_GLOG} optimized ${MINI_GLOG}
+#   debug ${OpenCV_LIBRARIES} optimized ${OpenCV_LIBRARIES}
+#   debug ${DBOW2_LIB} optimized ${DBOW2_LIB}
+#   debug ${G2O_LIB} optimized ${G2O_LIB}
+#   debug ${ORB_SLAM2_LIB} optimized ${ORB_SLAM2_LIB}
+#   debug ${OPENMAPPER_LIB} optimized ${OPENMAPPER_LIB}
+# )
+
+
 
 # generate proper GUI program on specified platform.
 IF(APPLE)

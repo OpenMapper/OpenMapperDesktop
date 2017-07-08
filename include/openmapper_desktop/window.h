@@ -1,28 +1,34 @@
 // (c) 2017 OpenMapper
 
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef OPENMAPPER_DESKTOP_WINDOW_H_
+#define OPENMAPPER_DESKTOP_WINDOW_H_
+
+#include <string>
+#include <vector>
+#include <iostream>
+#include <memory>
 
 #include <QWidget>
 #include <QSlider>
+
+#include "openmapper/openmapper.h"
 
 namespace Ui {
 class Window;
 }
 
-class Window : public QWidget
-{
-    Q_OBJECT
+class Window: public QWidget {
+Q_OBJECT
 
 public:
-    explicit Window(QWidget *parent = 0);
-    ~Window();
+	explicit Window(QWidget *parent = 0);
+	~Window();
 
 protected:
-    void keyPressEvent(QKeyEvent *event);
+	void keyPressEvent(QKeyEvent *event);
 
 private:
-    Ui::Window *ui;
+	Ui::Window *ui;
 };
 
-#endif // WINDOW_H
+#endif // OPENMAPPER_DESKTOP_WINDOW_H_

@@ -1,9 +1,9 @@
-// myglwidget.cpp
+// (c) 2017 OpenMapper
 
 #include <QtOpenGL>
 #include <QtWidgets>
 
-#include "myglwidget.h"
+#include "openmapper_desktop/myglwidget.h"
 
 MyGLWidget::MyGLWidget(QWidget *parent)
     : QGLWidget(QGLFormat(QGL::SampleBuffers), parent) {

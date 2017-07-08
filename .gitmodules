@@ -1,8 +1,4 @@
-[submodule "OpenMapper"]
-	path = OpenMapper
-	url = https://github.com/OpenMapper/OpenMapper.git
-
-
 [submodule "libs/OpenMapper"]
 	path = libs/OpenMapper
-	url = ../OpenMapper.git
+	url = https://github.com/OpenMapper/OpenMapper.git
+

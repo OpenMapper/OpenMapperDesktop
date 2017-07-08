@@ -1,6 +1,5 @@
 // (c) 2017 OpenMapper
 
-#include <QDebug>
 #include <QtWidgets>
 
 #include "openmapper_desktop/config.h"
@@ -23,8 +22,8 @@ Window::Window(QWidget *parent)
   connect(ui->myGLWidget, SIGNAL(zRotationChanged(int)), ui->rotZSlider,
           SLOT(setValue(int)));
 
-  initialize_input();
   LOG(INFO) << "Starting the engine. ";
+  initialize_input();
   timerId = startTimer(50);
 }
 
@@ -49,8 +48,6 @@ void Window::timerEvent(QTimerEvent *event) {
   openmapper_engine_.getPose(pos, rot);
 
   LOG(INFO) << "Pose: " << (*pos)[0] << " " << (*pos)[1] << " " << (*pos)[2];
-
-  qDebug() << "Update...";
 }
 
 void Window::initialize_input() {

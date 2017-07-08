@@ -3,7 +3,9 @@
 #ifndef OPENMAPPER_DESKTOP_MYGLWIDGET_H_
 #define OPENMAPPER_DESKTOP_MYGLWIDGET_H_
 
+#include <glog/logging.h>
 #include <QGLWidget>
+#include "openmapper/openmapper.h"
 
 class MyGLWidget : public QGLWidget {
   Q_OBJECT
@@ -42,6 +44,7 @@ class MyGLWidget : public QGLWidget {
   int xRot;
   int yRot;
   int zRot;
+
 
   QPoint lastPos;
 };

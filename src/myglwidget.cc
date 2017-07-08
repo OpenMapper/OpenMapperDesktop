@@ -8,31 +8,15 @@
 #include <QtOpenGL>
 #include <QtWidgets>
 
-#include "openmapper/openmapper.h"
 
 #include "openmapper_desktop/myglwidget.h"
 
 MyGLWidget::MyGLWidget(QWidget *parent)
-    : QGLWidget(QGLFormat(QGL::SampleBuffers), parent) {
+    : QGLWidget(QGLFormat(QGL::SampleBuffers), parent){
   xRot = 0;
   yRot = 0;
   zRot = 0;
 
-  std::string path_to_vocabulary =
-      "libs/OpenMapper/thirdparty/slam_engine/ORB_SLAM2/Vocabulary/ORBvoc.txt";
-  std::string path_to_settings =
-      "libs/OpenMapper/thirdparty/slam_engine/ORB_SLAM2/Vocabulary/webcam.yaml";
-
-  std::vector<std::string> flags;
-  flags.push_back(path_to_vocabulary);
-  flags.push_back(path_to_settings);
-
-  std::shared_ptr<std::vector<double>> pos(new std::vector<double>);
-  std::shared_ptr<std::vector<double>> rot(new std::vector<double>);
-
-  openmapper::OpenMapper OpenMapper_engine(flags);
-  OpenMapper_engine.getPose(pos, rot);
-  std::cout << "Position " << (*pos)[0] << " " << (*pos)[1] << " " << '\n';
 }
 
 MyGLWidget::~MyGLWidget() {}

@@ -7,7 +7,7 @@ SET(CMAKE_CXX_STANDARD 14)
 SET(CMAKE_AUTOMOC ON)
 SET(CMAKE_AUTOUIC ON)  
 
-# Find includes in corresponding build directories
+# Find includes in corresponding build directories.
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 
@@ -79,22 +79,7 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME}_main
   debug ${OPENMAPPER_LIB} optimized ${OPENMAPPER_LIB}
 )
 
-# ADD_EXECUTABLE(${PROJECT_NAME}_main2
-#   ${OMD_LIB_SRC_DIR}/main_desktop.cpp
-# )
-# 
-# TARGET_LINK_LIBRARIES(${PROJECT_NAME}_main2
-#   debug ${MINI_GLOG} optimized ${MINI_GLOG}
-#   debug ${OpenCV_LIBRARIES} optimized ${OpenCV_LIBRARIES}
-#   debug ${DBOW2_LIB} optimized ${DBOW2_LIB}
-#   debug ${G2O_LIB} optimized ${G2O_LIB}
-#   debug ${ORB_SLAM2_LIB} optimized ${ORB_SLAM2_LIB}
-#   debug ${OPENMAPPER_LIB} optimized ${OPENMAPPER_LIB}
-# )
-
-
-
-# generate proper GUI program on specified platform.
+# Generate proper GUI program on specified platform.
 IF(APPLE)
 	SET_TARGET_PROPERTIES(${PROJECT_NAME}_main PROPERTIES
 			MACOSX_BUNDLE YES

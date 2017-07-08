@@ -1,33 +1,30 @@
 // (c) 2017 OpenMapper
 
-#include <string>
-#include <vector>
 #include <iostream>
 #include <memory>
+#include <string>
+#include <vector>
 
 #include <QApplication>
 #include <QDesktopWidget>
 
 #include "openmapper_desktop/window.h"
 
-
 int main(int argc, char *argv[]) {
-	QApplication app(argc, argv);
-	Window window;
-	window.resize(window.sizeHint());
-	int desktopArea = QApplication::desktop()->width()
-			* QApplication::desktop()->height();
-	int widgetArea = window.width() * window.height();
+  QApplication app(argc, argv);
+  Window window;
+  window.resize(window.sizeHint());
+  int desktopArea =
+      QApplication::desktop()->width() * QApplication::desktop()->height();
+  int widgetArea = window.width() * window.height();
 
-	window.setWindowTitle("OpenGL with Qt");
+  window.setWindowTitle("OpenGL with Qt");
 
-	if (((float) widgetArea / (float) desktopArea) < 0.75f) {
-		window.show();
-	} else {
-		window.showMaximized();
-	}
+  if (((float)widgetArea / (float)desktopArea) < 0.75f) {
+    window.show();
+  } else {
+    window.showMaximized();
+  }
 
-
-
-	return app.exec();
+  return app.exec();
 }

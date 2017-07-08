@@ -3,11 +3,11 @@ sudo: required
 language: c++
 before_install: sudo apt-get update
 addons:
-apt:
-  sources:
-    - ubuntu-toolchain-r-test
-  packages:
-    - freeglut3-dev # OpenGL
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - freeglut3-dev # OpenGL
 before_script:
     - sudo apt-get remove gcc
     - sudo apt-get remove g++

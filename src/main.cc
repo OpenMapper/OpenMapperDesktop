@@ -1,4 +1,4 @@
-// main.cpp
+// (c) 2017 OpenMapper
 
 #include <string>
 #include <vector>
@@ -7,7 +7,7 @@
 #include <QApplication>
 #include <QDesktopWidget>
 
-#include "window.h"
+#include "openmapper_desktop/window.h"
 //#include "wrapper.h"
 
 int main(int argc, char *argv[]) {

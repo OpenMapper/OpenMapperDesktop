@@ -31,7 +31,7 @@ before_script:
     - rosdep update
     - source /opt/ros/indigo/setup.bash
     # Install OpenCV3
-    #- sudo apt-get install ros-indigo-opencv3 ros-indigo-eigen-conversions
+    - sudo apt-get install ros-indigo-opencv3 ros-indigo-eigen-conversions
 
 script:
     # Check versions of gcc, g++ and cmake

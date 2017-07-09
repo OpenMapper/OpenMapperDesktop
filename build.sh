@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rm -rf build/
+# rm -rf build/
 
-# Build OpenMapper Static Lib only
+# Build OpenMapperDesktop
 mkdir -p build
 cd build
 cmake .. 

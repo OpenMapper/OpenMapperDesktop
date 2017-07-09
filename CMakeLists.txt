@@ -77,7 +77,6 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME}_main
   debug ${G2O_LIB} optimized ${G2O_LIB}
   debug ${ORB_SLAM2_LIB} optimized ${ORB_SLAM2_LIB}
   debug ${OPENMAPPER_LIB} optimized ${OPENMAPPER_LIB}
-
 )
 
 # generate proper GUI program on specified platform.

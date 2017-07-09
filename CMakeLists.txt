@@ -7,7 +7,7 @@ SET(CMAKE_CXX_STANDARD 14)
 SET(CMAKE_AUTOMOC ON)
 SET(CMAKE_AUTOUIC ON)  
 
-# Find includes in corresponding build directories
+# Find includes in corresponding build directories.
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 
@@ -55,17 +55,17 @@ SET(OMD_LIB_SRC_DIR
 FILE(GLOB_RECURSE OMD_LIB_HEADERS "${OMD_LIB_HEADER_DIR}/*.h")
 FILE(GLOB_RECURSE OMD_LIB_SOURCES "${OMD_LIB_SRC_DIR}/*.cc")
 
+
 SET(OMD_LIB_RESOURCES
   ${OMD_LIB_SOURCES}
   ${OMD_LIB_HEADERS}
 )
 
-# compile
 ADD_EXECUTABLE(${PROJECT_NAME}_main
+  ${OMD_LIB_SRC_DIR}/main.cpp
   ${OMD_LIB_RESOURCES}
 )
 
-# Build it (link libraries)
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}_main
   Qt5::Widgets
   Qt5::Core
@@ -79,7 +79,7 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME}_main
   debug ${OPENMAPPER_LIB} optimized ${OPENMAPPER_LIB}
 )
 
-# generate proper GUI program on specified platform.
+# Generate proper GUI program on specified platform.
 IF(APPLE)
 	SET_TARGET_PROPERTIES(${PROJECT_NAME}_main PROPERTIES
 			MACOSX_BUNDLE YES

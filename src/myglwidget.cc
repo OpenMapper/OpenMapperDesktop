@@ -1,15 +1,22 @@
 // (c) 2017 OpenMapper
 
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+
 #include <QtOpenGL>
 #include <QtWidgets>
+
 
 #include "openmapper_desktop/myglwidget.h"
 
 MyGLWidget::MyGLWidget(QWidget *parent)
-    : QGLWidget(QGLFormat(QGL::SampleBuffers), parent) {
+    : QGLWidget(QGLFormat(QGL::SampleBuffers), parent){
   xRot = 0;
   yRot = 0;
   zRot = 0;
+
 }
 
 MyGLWidget::~MyGLWidget() {}
@@ -19,10 +26,8 @@ QSize MyGLWidget::minimumSizeHint() const { return QSize(50, 50); }
 QSize MyGLWidget::sizeHint() const { return QSize(400, 400); }
 
 static void qNormalizeAngle(int &angle) {
-  while (angle < 0)
-    angle += 360 * 16;
-  while (angle > 360)
-    angle -= 360 * 16;
+  while (angle < 0) angle += 360 * 16;
+  while (angle > 360) angle -= 360 * 16;
 }
 
 void MyGLWidget::setXRotation(int angle) {
@@ -144,5 +149,4 @@ void MyGLWidget::draw() {
   glVertex3f(-1, -1, 0);
   glVertex3f(0, 0, 1.2);
   glEnd();
-
 }

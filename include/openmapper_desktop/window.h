@@ -12,11 +12,8 @@
 #include <QWidget>
 
 #include <opencv2/core/core.hpp>
+#include <openmapper_desktop/config.h>
 
-// OpenMapper
-#include "openmapper/input_source.h"
-#include "openmapper/openmapper.h"
-#include "openmapper/renderer.h"
 namespace Ui {
 class Window;
 }
@@ -43,7 +40,7 @@ class Window : public QWidget {
   std::shared_ptr<openmapper::InputSource> input_source_;
 
   std::vector<std::string> flags_;
-  openmapper::OpenMapper openmapper_engine_;
+  std::shared_ptr<openmapper::OpenMapper> openmapper_engine_;
 };
 
 #endif  // OPENMAPPER_DESKTOP_WINDOW_H_

@@ -133,8 +133,7 @@ void MyGLWidget::draw() {
 	glColor3f(0.0, 0.0, 0.0);
 
 	for (size_t i = 0, iend = vpMPs.size(); i < iend; ++i) {
-		const cv::Mat pos = vpMPs[i];
-		glVertex3f(pos.at<float>(0), pos.at<float>(1), pos.at<float>(2));
+		glVertex3f(vpMPs[i].x, vpMPs[i].y, vpMPs[i].z));
 	}
 	glEnd();
 

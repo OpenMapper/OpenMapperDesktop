@@ -120,7 +120,7 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event) {
 }
 
 void MyGLWidget::draw() {
-	qglColor(Qt::red);
+	//qglColor(Qt::red);
 
 	const std::vector<cv::Point3f>& vpMPs =
 			openmapper_engine_->map_->getFeaturesPosition();
@@ -128,7 +128,8 @@ void MyGLWidget::draw() {
 	if (vpMPs.empty())
 		return;
 
-	glPointSize (2.0f);
+	const point_size = 2.0f:
+	glPointSize(point_size);
 	glBegin(GL_POINTS);
 	glColor3f(0.0, 0.0, 0.0);
 

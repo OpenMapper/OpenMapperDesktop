@@ -125,15 +125,13 @@ void MyGLWidget::draw() {
 	const std::vector<cv::Point3f>& vpMPs =
 			openmapper_engine_->map_->getFeaturesPosition();
 
-	if (vpMPs.empty())
-		return;
-
-	const point_size = 2.0f:
+	constexpr float point_size = 2.0f:
+	
 	glPointSize(point_size);
 	glBegin(GL_POINTS);
 	glColor3f(0.0, 0.0, 0.0);
 
-	for (size_t i = 0, iend = vpMPs.size(); i < iend; ++i) {
+	for (std::size_t i = 0u; i < vpMPs.size(); ++i) {
 		glVertex3f(vpMPs[i].x, vpMPs[i].y, vpMPs[i].z));
 	}
 	glEnd();

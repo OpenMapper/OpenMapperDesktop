@@ -12,6 +12,7 @@
 #include <QWidget>
 
 #include <opencv2/core/core.hpp>
+
 #include <openmapper_desktop/config.h>
 
 namespace Ui {
@@ -22,17 +23,18 @@ class Window : public QWidget {
   Q_OBJECT
 
  public:
-  explicit Window(QWidget *parent = 0);
+  explicit Window(QWidget* parent = 0);
   ~Window();
 
  protected:
-  void keyPressEvent(QKeyEvent *event);
-  void timerEvent(QTimerEvent *event);
+  void keyPressEvent(QKeyEvent* event);
+  void timerEvent(QTimerEvent* event);
   void initialize_input();
 
  private:
-  Ui::Window *ui;
+  Ui::Window* ui;
   int timerId;
+
   //
   // The input source manages the input images. It gets the images over opencv
   // from a camera or movie.

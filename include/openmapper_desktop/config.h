@@ -9,13 +9,6 @@
 #include "openmapper/input_source.h"
 #include "openmapper/openmapper.h"
 #include "openmapper/renderer.h"
-
-std::string path_to_vocabulary =
-    "libs/OpenMapper/thirdparty/slam_engine/ORB_SLAM2/Vocabulary/ORBvoc.txt";
-std::string path_to_settings =
-    "libs/OpenMapper/thirdparty/slam_engine/ORB_SLAM2/Vocabulary/webcam.yaml";
-
-
-
+#include "openmapper/settings.h"
 
 #endif  // OPENMAPPER_DESKTOP_CONFIG_H_

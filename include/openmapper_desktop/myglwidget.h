@@ -4,8 +4,12 @@
 #define OPENMAPPER_DESKTOP_MYGLWIDGET_H_
 
 #include <glog/logging.h>
+
 #include <QGLWidget>
+
 #include "openmapper_desktop/config.h"
+
+#include "openmapper/renderer.h"
 
 class MyGLWidget : public QGLWidget {
   Q_OBJECT
@@ -13,6 +17,7 @@ class MyGLWidget : public QGLWidget {
   explicit MyGLWidget(QWidget* parent = 0);
   ~MyGLWidget();
   std::shared_ptr<openmapper::OpenMapper> openmapper_engine_;
+  std::shared_ptr<openmapper::Renderer> renderer_;
 
  signals:
 

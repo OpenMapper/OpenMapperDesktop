@@ -14,7 +14,7 @@
 class MyGLWidget : public QGLWidget {
   Q_OBJECT
  public:
-  explicit MyGLWidget(QWidget* parent = 0);
+  explicit MyGLWidget(QWidget *parent = 0);
   ~MyGLWidget();
   std::shared_ptr<openmapper::OpenMapper> openmapper_engine_;
   std::shared_ptr<openmapper::Renderer> renderer_;
@@ -30,8 +30,8 @@ class MyGLWidget : public QGLWidget {
 
   QSize minimumSizeHint() const;
   QSize sizeHint() const;
-  void mousePressEvent(QMouseEvent* event);
-  void mouseMoveEvent(QMouseEvent* event);
+  void mousePressEvent(QMouseEvent *event);
+  void mouseMoveEvent(QMouseEvent *event);
 
  public slots:
   // slots for xyz-rotation slider

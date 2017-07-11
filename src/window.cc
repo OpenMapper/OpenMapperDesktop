@@ -8,7 +8,7 @@
 #include "openmapper_desktop/myglwidget.h"
 #include "openmapper_desktop/window.h"
 
-Window::Window(QWidget* parent)
+Window::Window(QWidget *parent)
     : QWidget(parent),
       ui(new Ui::Window),
       flags_{path_to_vocabulary, path_to_settings},
@@ -33,7 +33,7 @@ Window::~Window() {
   delete ui;
 }
 
-void Window::timerEvent(QTimerEvent* event) {
+void Window::timerEvent(QTimerEvent *event) {
   CHECK_NOTNULL(input_source_.get());
   CHECK(input_source_->isInputModeSet());
 
@@ -59,7 +59,7 @@ void Window::initialize_input() {
   input_source_->setInput(openmapper::InputSource::kCamera, device);
 }
 
-void Window::keyPressEvent(QKeyEvent* e) {
+void Window::keyPressEvent(QKeyEvent *e) {
   if (e->key() == Qt::Key_Escape)
     close();
   else

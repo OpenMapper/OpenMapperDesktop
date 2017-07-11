@@ -10,7 +10,7 @@
 
 #include "openmapper_desktop/myglwidget.h"
 
-MyGLWidget::MyGLWidget(QWidget* parent)
+MyGLWidget::MyGLWidget(QWidget *parent)
     : QGLWidget(QGLFormat(QGL::SampleBuffers), parent) {
   xRot = 0;
   yRot = 0;
@@ -25,7 +25,7 @@ QSize MyGLWidget::minimumSizeHint() const { return QSize(50, 50); }
 QSize MyGLWidget::sizeHint() const { return QSize(400, 400); }
 
 // TODO(gocarlos): remove those functions.
-static void qNormalizeAngle(int& angle) {}
+static void qNormalizeAngle(int &angle) {}
 void MyGLWidget::setXRotation(int angle) {}
 void MyGLWidget::setYRotation(int angle) {}
 void MyGLWidget::setZRotation(int angle) {}
@@ -68,9 +68,9 @@ void MyGLWidget::resizeGL(int width, int height) {
   glMatrixMode(GL_MODELVIEW);
 }
 
-void MyGLWidget::mousePressEvent(QMouseEvent* event) { lastPos = event->pos(); }
+void MyGLWidget::mousePressEvent(QMouseEvent *event) { lastPos = event->pos(); }
 
-void MyGLWidget::mouseMoveEvent(QMouseEvent* event) {
+void MyGLWidget::mouseMoveEvent(QMouseEvent *event) {
   int dx = event->x() - lastPos.x();
   int dy = event->y() - lastPos.y();
 

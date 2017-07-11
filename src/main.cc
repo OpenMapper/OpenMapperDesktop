@@ -10,7 +10,7 @@
 
 #include "openmapper_desktop/window.h"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
   Window window;
   window.resize(window.sizeHint());

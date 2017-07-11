@@ -20,7 +20,7 @@ MyGLWidget::MyGLWidget(QWidget *parent)
 
 MyGLWidget::~MyGLWidget() {}
 
-QSize MyGLWidget::minimumSizeHint() const { return QSize(50, 50); }
+QSize MyGLWidget::minimumSizeHint() const { return QSize(100, 100); }
 
 QSize MyGLWidget::sizeHint() const { return QSize(400, 400); }
 
@@ -50,7 +50,7 @@ void MyGLWidget::initializeGL() {
 void MyGLWidget::paintGL() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glLoadIdentity();
-  glTranslatef(0.0, 0.0, -5.0);
+  glTranslatef(0.0, 0.0, -1.0);
   draw();
 }
 
@@ -85,4 +85,7 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event) {
   lastPos = event->pos();
 }
 
-void MyGLWidget::draw() { renderer_->drawMapPoints(); }
+void MyGLWidget::draw() {
+//  renderer_->drawMapPoints();
+  renderer_->drawCurrentImage();
+}

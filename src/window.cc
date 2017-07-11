@@ -49,11 +49,6 @@ void Window::timerEvent(QTimerEvent *event) {
   openmapper_engine_->getPose(pos, rot);
 
   LOG(INFO) << "Pose: " << (*pos)[0] << " " << (*pos)[1] << " " << (*pos)[2];
-
-  cv::Mat img2 = openmapper_engine_->cur_img_w_features_;
-  cvtColor(img2, img2, CV_BGR2RGB);
-  ui->image_label->setPixmap(QPixmap::fromImage(QImage(
-      img2.data, img2.cols, img2.rows, img2.step, QImage::Format_RGB888)));
 }
 
 void Window::initialize_input() {

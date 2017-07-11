@@ -125,7 +125,7 @@ void MyGLWidget::draw() {
 	const std::vector<cv::Point3f>& vpMPs =
 			openmapper_engine_->map_->getFeaturesPosition();
 
-	constexpr float point_size = 2.0f:
+	constexpr float point_size = 2.0f;
 	
 	glPointSize(point_size);
 	glBegin(GL_POINTS);

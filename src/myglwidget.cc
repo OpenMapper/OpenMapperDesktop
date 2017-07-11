@@ -85,4 +85,7 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event) {
   lastPos = event->pos();
 }
 
-void MyGLWidget::draw() { renderer_->drawMapPoints(); }
+void MyGLWidget::draw() {
+  renderer_->drawMapPoints();
+  renderer_->drawCurrentImage();
+}

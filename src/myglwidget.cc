@@ -8,15 +8,14 @@
 #include <QtOpenGL>
 #include <QtWidgets>
 
-
 #include "openmapper_desktop/myglwidget.h"
 
 MyGLWidget::MyGLWidget(QWidget *parent)
-    : QGLWidget(QGLFormat(QGL::SampleBuffers), parent){
+    : QGLWidget(QGLFormat(QGL::SampleBuffers), parent) {
   xRot = 0;
   yRot = 0;
   zRot = 0;
-
+  renderer_.reset(new openmapper::Renderer);
 }
 
 MyGLWidget::~MyGLWidget() {}
@@ -25,37 +24,11 @@ QSize MyGLWidget::minimumSizeHint() const { return QSize(50, 50); }
 
 QSize MyGLWidget::sizeHint() const { return QSize(400, 400); }
 
-static void qNormalizeAngle(int &angle) {
-  while (angle < 0) angle += 360 * 16;
-  while (angle > 360) angle -= 360 * 16;
-}
-
-void MyGLWidget::setXRotation(int angle) {
-  qNormalizeAngle(angle);
-  if (angle != xRot) {
-    xRot = angle;
-    emit xRotationChanged(angle);
-    updateGL();
-  }
-}
-
-void MyGLWidget::setYRotation(int angle) {
-  qNormalizeAngle(angle);
-  if (angle != yRot) {
-    yRot = angle;
-    emit yRotationChanged(angle);
-    updateGL();
-  }
-}
-
-void MyGLWidget::setZRotation(int angle) {
-  qNormalizeAngle(angle);
-  if (angle != zRot) {
-    zRot = angle;
-    emit zRotationChanged(angle);
-    updateGL();
-  }
-}
+// TODO(gocarlos): remove those functions.
+static void qNormalizeAngle(int &angle) {}
+void MyGLWidget::setXRotation(int angle) {}
+void MyGLWidget::setYRotation(int angle) {}
+void MyGLWidget::setZRotation(int angle) {}
 
 void MyGLWidget::initializeGL() {
   qglClearColor(Qt::black);
@@ -68,15 +41,16 @@ void MyGLWidget::initializeGL() {
 
   static GLfloat lightPosition[4] = {0, 0, 10, 1.0};
   glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+
+  // Pass the pointer to the renderer in order to let it access the data should
+  // should be rendered.
+  renderer_->openmapper_engine_ = openmapper_engine_;
 }
 
 void MyGLWidget::paintGL() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glLoadIdentity();
-  glTranslatef(0.0, 0.0, -10.0);
-  glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
-  glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
-  glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);
+  glTranslatef(0.0, 0.0, -5.0);
   draw();
 }
 
@@ -111,42 +85,4 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event) {
   lastPos = event->pos();
 }
 
-void MyGLWidget::draw() {
-  qglColor(Qt::red);
-
-  glBegin(GL_QUADS);
-  glNormal3f(0, 0, -1);
-  glVertex3f(-1, -1, 0);
-  glVertex3f(-1, 1, 0);
-  glVertex3f(1, 1, 0);
-  glVertex3f(1, -1, 0);
-  glEnd();
-
-  glBegin(GL_TRIANGLES);
-  glNormal3f(0, -1, 0.707);
-  glVertex3f(-1, -1, 0);
-  glVertex3f(1, -1, 0);
-  glVertex3f(0, 0, 1.2);
-  glEnd();
-
-  glBegin(GL_TRIANGLES);
-  glNormal3f(1, 0, 0.707);
-  glVertex3f(1, -1, 0);
-  glVertex3f(1, 1, 0);
-  glVertex3f(0, 0, 1.2);
-  glEnd();
-
-  glBegin(GL_TRIANGLES);
-  glNormal3f(0, 1, 0.707);
-  glVertex3f(1, 1, 0);
-  glVertex3f(-1, 1, 0);
-  glVertex3f(0, 0, 1.2);
-  glEnd();
-
-  glBegin(GL_TRIANGLES);
-  glNormal3f(-1, 0, 0.707);
-  glVertex3f(-1, 1, 0);
-  glVertex3f(-1, -1, 0);
-  glVertex3f(0, 0, 1.2);
-  glEnd();
-}
+void MyGLWidget::draw() { renderer_->drawMapPoints(); }

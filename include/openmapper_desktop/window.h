@@ -13,10 +13,8 @@
 
 #include <opencv2/core/core.hpp>
 
-// OpenMapper
-#include "openmapper/input_source.h"
-#include "openmapper/openmapper.h"
-#include "openmapper/renderer.h"
+#include <openmapper_desktop/config.h>
+
 namespace Ui {
 class Window;
 }
@@ -36,6 +34,7 @@ class Window : public QWidget {
  private:
   Ui::Window *ui;
   int timerId;
+
   //
   // The input source manages the input images. It gets the images over opencv
   // from a camera or movie.
@@ -43,7 +42,7 @@ class Window : public QWidget {
   std::shared_ptr<openmapper::InputSource> input_source_;
 
   std::vector<std::string> flags_;
-  openmapper::OpenMapper openmapper_engine_;
+  std::shared_ptr<openmapper::OpenMapper> openmapper_engine_;
 };
 
 #endif  // OPENMAPPER_DESKTOP_WINDOW_H_

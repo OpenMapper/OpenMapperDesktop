@@ -2,18 +2,19 @@
 
 #include <QtWidgets>
 
-#include "openmapper_desktop/config.h"
+#include "ui_window.h"
 
+#include "openmapper_desktop/config.h"
 #include "openmapper_desktop/myglwidget.h"
 #include "openmapper_desktop/window.h"
-#include "ui_window.h"
 
 Window::Window(QWidget *parent)
     : QWidget(parent),
       ui(new Ui::Window),
       flags_{path_to_vocabulary, path_to_settings},
-      openmapper_engine_(flags_) {
+      openmapper_engine_(new openmapper::OpenMapper(flags_)) {
   ui->setupUi(this);
+  ui->myGLWidget->openmapper_engine_ = openmapper_engine_;
 
   connect(ui->myGLWidget, SIGNAL(xRotationChanged(int)), ui->rotXSlider,
           SLOT(setValue(int)));
@@ -39,13 +40,13 @@ void Window::timerEvent(QTimerEvent *event) {
   input_source_->grabImage();
   cv::Mat img = input_source_->getCurrentImage();
 
-  bool tracking = openmapper_engine_.trackImage(
+  bool tracking = openmapper_engine_->trackImage(
       img, input_source_->getCurrentImageTimeSec());
   std::shared_ptr<std::vector<double>> pos(new std::vector<double>);
   std::shared_ptr<std::vector<double>> rot(new std::vector<double>);
 
   // Get pose of the camera in the fixed coordinate system.
-  openmapper_engine_.getPose(pos, rot);
+  openmapper_engine_->getPose(pos, rot);
 
   LOG(INFO) << "Pose: " << (*pos)[0] << " " << (*pos)[1] << " " << (*pos)[2];
 }

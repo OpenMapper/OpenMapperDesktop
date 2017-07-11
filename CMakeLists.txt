@@ -62,7 +62,6 @@ SET(OMD_LIB_RESOURCES
 )
 
 ADD_EXECUTABLE(${PROJECT_NAME}_main
-  ${OMD_LIB_SRC_DIR}/main.cpp
   ${OMD_LIB_RESOURCES}
 )
 
@@ -81,13 +80,13 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME}_main
 
 # Generate proper GUI program on specified platform.
 IF(APPLE)
-	SET_TARGET_PROPERTIES(${PROJECT_NAME}_main PROPERTIES
-			MACOSX_BUNDLE YES
-	)
+  SET_TARGET_PROPERTIES(${PROJECT_NAME}_main PROPERTIES
+    MACOSX_BUNDLE YES
+  )
 ELSEIF(UNIX)
-	# Nothing special required
+  # Nothing special required
 ELSE()
-	message(SEND_ERROR "You are on an unsupported platform! (Windows not supported yet)")
+  message(SEND_ERROR "You are on an unsupported platform! (Windows not supported yet)")
 ENDIF(APPLE)
 
 SET_TARGET_PROPERTIES(${PROJECT_NAME}_main  PROPERTIES

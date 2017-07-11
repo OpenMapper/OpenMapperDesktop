@@ -1,3 +1,6 @@
+# Style
+.clang-format
+
 # C++ objects and libs
 
 *.slo

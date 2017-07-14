@@ -12,7 +12,8 @@ Window::Window(QWidget *parent)
     : QWidget(parent),
       ui(new Ui::Window),
       flags_{path_to_vocabulary, path_to_settings},
-      openmapper_engine_(new openmapper::OpenMapper(flags_)) {
+      openmapper_engine_(new openmapper::OpenMapper(flags_)),
+      tracking_image_(false) {
   ui->setupUi(this);
   ui->myGLWidget->openmapper_engine_ = openmapper_engine_;
 
@@ -23,7 +24,7 @@ Window::Window(QWidget *parent)
   connect(ui->myGLWidget, SIGNAL(zRotationChanged(int)), ui->rotZSlider,
           SLOT(setValue(int)));
 
-  LOG(INFO) << "Starting the engine. ";
+  LOG(INFO) << "Starting the engine...";
   initialize_input();
   timerId = startTimer(50);
 }
@@ -37,23 +38,26 @@ void Window::timerEvent(QTimerEvent *event) {
   CHECK_NOTNULL(input_source_.get());
   CHECK(input_source_->isInputModeSet());
 
-  input_source_->grabImage();
-  cv::Mat img = input_source_->getCurrentImage();
+  if (tracking_image_) {
+    input_source_->grabImage();
+    cv::Mat img = input_source_->getCurrentImage();
 
-  bool tracking = openmapper_engine_->trackImage(
-      img, input_source_->getCurrentImageTimeSec());
-  std::shared_ptr<std::vector<double>> pos(new std::vector<double>);
-  std::shared_ptr<std::vector<double>> rot(new std::vector<double>);
+    bool tracking = openmapper_engine_->trackImage(
+        img, input_source_->getCurrentImageTimeSec());
+    std::shared_ptr<std::vector<double>> pos(new std::vector<double>);
+    std::shared_ptr<std::vector<double>> rot(new std::vector<double>);
 
-  // Get pose of the camera in the fixed coordinate system.
-  openmapper_engine_->getPose(pos, rot);
+    // Get pose of the camera in the fixed coordinate system.
+    openmapper_engine_->getPose(pos, rot);
 
-  LOG(INFO) << "Pose: " << (*pos)[0] << " " << (*pos)[1] << " " << (*pos)[2];
+    LOG(INFO) << "Pose: " << (*pos)[0] << " " << (*pos)[1] << " " << (*pos)[2];
 
-  cv::Mat img2 = openmapper_engine_->cur_img_w_features_;
-  cvtColor(img2, img2, CV_BGR2RGB);
-  ui->image_label->setPixmap(QPixmap::fromImage(QImage(
-      img2.data, img2.cols, img2.rows, img2.step, QImage::Format_RGB888)));
+    // Show the image in a Qlabel.
+    cv::Mat img2 = openmapper_engine_->cur_img_w_features_;
+    cvtColor(img2, img2, CV_BGR2RGB);
+    ui->image_label->setPixmap(QPixmap::fromImage(QImage(
+        img2.data, img2.cols, img2.rows, img2.step, QImage::Format_RGB888)));
+  }
 }
 
 void Window::initialize_input() {
@@ -65,8 +69,21 @@ void Window::initialize_input() {
 }
 
 void Window::keyPressEvent(QKeyEvent *e) {
-  if (e->key() == Qt::Key_Escape)
+  if (e->key() == Qt::Key_Escape) {
+    // Close the window.
     close();
-  else
+  } else if (e->key() == Qt::Key_Space) {
+    // Start or stop tracking.
+    if (tracking_image_) {
+      // Engine is already running, lets stop it.
+      tracking_image_ = false;
+      LOG(WARNING) << "Going to stop the engine.";
+    } else {
+      LOG(WARNING) << "Going to start the engine.";
+      tracking_image_ = true;
+    }
+
+  } else {
     QWidget::keyPressEvent(e);
+  }
 }

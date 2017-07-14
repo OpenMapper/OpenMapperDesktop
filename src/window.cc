@@ -16,6 +16,7 @@ Window::Window(QWidget *parent)
       tracking_image_(false) {
   ui->setupUi(this);
   ui->myGLWidget->openmapper_engine_ = openmapper_engine_;
+  ui->text_label->setText("SPACE to start and stop the Engine. \nESC to close the window. ");
 
   connect(ui->myGLWidget, SIGNAL(xRotationChanged(int)), ui->rotXSlider,
           SLOT(setValue(int)));

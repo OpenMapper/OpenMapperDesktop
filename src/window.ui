@@ -15,6 +15,13 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QLabel" name="text_label">
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QLabel" name="image_label">
      <property name="text">
       <string>TextLabel</string>
@@ -29,7 +36,6 @@
        <height>200</height>
       </size>
      </property>
-     <zorder>image_label</zorder>
     </widget>
    </item>
    <item>

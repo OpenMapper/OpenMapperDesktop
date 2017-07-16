@@ -101,7 +101,7 @@ IF(PACKAGE_APP)
     SET(CPACK_GENERATOR "DEB")
     # Dependencies
     SET(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON) # Commented as it uses the ros-lunar-opencv package as dependency instead of libopencv.
-    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.14), libgcc1 (>= 1:3.0), libgl1, libqt5core5a (>= 5.7.0), libqt5gui5 (>= 5.3.0) | libqt5gui5-gles (>= 5.3.0), libqt5opengl5 (>= 5.0.2) | libqt5opengl5-gles (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libstdc++6 (>= 6), ros-lunar-opencv3")
+    SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.14), libgcc1 (>= 1:3.0), libgl1, libqt5core5a (>= 5.7.0), libqt5gui5 (>= 5.3.0) | libqt5gui5-gles (>= 5.3.0), libqt5opengl5 (>= 5.0.2) | libqt5opengl5-gles (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libstdc++6 (>= 6), libopencv-dev (>=2.4.0)")
     #   freeglut3-dev,
     #   qt5-default,
     #   libqt5opengl5-dev,

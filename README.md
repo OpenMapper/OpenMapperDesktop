@@ -4,13 +4,12 @@ Desktop GUI for the OpenMapper App
 
 ## Build status
 
-| Platform  | Status   |
-| --------- | ---------|
-| Linux & macOS     | [![Build Status](https://travis-ci.org/OpenMapper/OpenMapperDesktop.svg?branch=master)](https://travis-ci.org/OpenMapper/OpenMapperDesktop) |
-| Windows   | TODO |
+| Platform  | Status   | Packaging |
+| --------- | ---------| ---------|
+| Linux     | [![Build Status](https://travis-ci.org/OpenMapper/OpenMapperDesktop.svg?branch=master)](https://travis-ci.org/OpenMapper/OpenMapperDesktop) | [![Snap Status](https://build.snapcraft.io/badge/OpenMapper/OpenMapperDesktop.svg)](https://build.snapcraft.io/user/OpenMapper/OpenMapperDesktop) |
+| macOS | [![Build Status](https://travis-ci.org/OpenMapper/OpenMapperDesktop.svg?branch=master)](https://travis-ci.org/OpenMapper/OpenMapperDesktop) | TODO |
+| Windows   | TODO | TODO |
 
-
-[![Snap Status](https://build.snapcraft.io/badge/OpenMapper/OpenMapperDesktop.svg)](https://build.snapcraft.io/user/OpenMapper/OpenMapperDesktop)
 
 ## Licence
 

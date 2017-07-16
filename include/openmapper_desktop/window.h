@@ -43,6 +43,9 @@ class Window : public QWidget {
 
   std::vector<std::string> flags_;
   std::shared_ptr<openmapper::OpenMapper> openmapper_engine_;
+
+  // Is true if the engine should run, and false if not.
+  bool tracking_image_;
 };
 
 #endif  // OPENMAPPER_DESKTOP_WINDOW_H_

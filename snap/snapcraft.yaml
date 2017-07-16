@@ -14,4 +14,8 @@ parts:
   application: # part name can take whatever identifier one likes.
     # See 'snapcraft plugins'
     plugin:    cmake
+    build-packages:
+      - libeigen3-dev
+      - build-essential
+      - libopencv-dev
     after:     [desktop-qt5]

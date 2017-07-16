@@ -14,5 +14,4 @@ parts:
   application: # part name can take whatever identifier one likes.
     # See 'snapcraft plugins'
     plugin:    cmake
-    qt-version: qt5
     after:     [desktop-qt5]

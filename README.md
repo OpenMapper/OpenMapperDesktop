@@ -9,6 +9,9 @@ Desktop GUI for the OpenMapper App
 | Linux & macOS     | [![Build Status](https://travis-ci.org/OpenMapper/OpenMapperDesktop.svg?branch=master)](https://travis-ci.org/OpenMapper/OpenMapperDesktop) |
 | Windows   | TODO |
 
+
+[![Snap Status](https://build.snapcraft.io/badge/OpenMapper/OpenMapperDesktop.svg)](https://build.snapcraft.io/user/OpenMapper/OpenMapperDesktop)
+
 ## Licence
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)

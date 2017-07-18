@@ -20,6 +20,43 @@ Desktop GUI for the OpenMapper App
 ![gui](https://github.com/OpenMapper/OpenMapperDesktop/blob/feature/gui_improvements/doc/gui.png)
 
 
+## File Tree
+
+├── build.sh
+├── CMakeLists.txt
+├── doc
+│   └── gui.png
+├── include
+│   └── openmapper_desktop
+│       ├── config.h
+│       ├── myglwidget.h
+│       └── window.h
+├── libs
+│   └── OpenMapper
+│       ├── CMakeLists.txt
+│       ├── cmake_modules
+│       ├── include
+│       ├── LICENSE
+│       ├── README.md
+│       ├── src
+│       ├── test
+│       ├── thirdparty
+│       ├── tools
+│       └── wrapper
+├── LICENSE
+├── package.sh
+├── README.md
+├── run.sh
+├── snap
+│   └── snapcraft.yaml
+└── src
+    ├── main.cc
+    ├── myglwidget.cc
+    ├── window.cc
+    └── window.ui
+
+
+
 ## Installation
 ### Linux
 As Debian package, Install the following dependencies first:

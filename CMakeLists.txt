@@ -45,7 +45,7 @@ INCLUDE_DIRECTORIES(
   ${CMAKE_CURRENT_LIST_DIR}/libs/OpenMapper/thirdparty/slam_engine/ORB_SLAM2/Thirdparty/g2o/g2o/types
 )
 
-INCLUDE("${CMAKE_CURRENT_LIST_DIR}/../../../../../libs/OpenMapper/CMakeLists.txt")
+INCLUDE("${CMAKE_CURRENT_LIST_DIR}/libs/OpenMapper/CMakeLists.txt")
 
 SET(OMD_LIB_HEADER_DIR ${CMAKE_CURRENT_LIST_DIR}/include)
 SET(OMD_LIB_SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/src)
@@ -98,19 +98,6 @@ IF(PACKAGE_APP)
     # Dependencies
     SET(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON) # Commented as it uses the ros-lunar-opencv package as dependency instead of libopencv.
     SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.14), libgcc1 (>= 1:3.0), libgl1, libqt5core5a (>= 5.7.0), libqt5gui5 (>= 5.3.0) | libqt5gui5-gles (>= 5.3.0), libqt5opengl5 (>= 5.0.2) | libqt5opengl5-gles (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libstdc++6 (>= 6), libopencv-dev (>=2.4.0)")
-    #   freeglut3-dev,
-    #   qt5-default,
-    #   libqt5opengl5-dev,
-    #   libopencv-dev (>=2.4.0),
-    #   libc6 (>= 2.14),
-    #   libgcc1 (>= 1:3.0),
-    #   libgl1,
-    #   libqt5core5a (>= 5.7.0),
-    #   libqt5gui5-gles (>= 5.3.0),
-    #   libqt5opengl5-gles (>= 5.0.2),
-    #   libqt5widgets5 (>= 5.0.2),
-    #   libstdc++6 (>= 6)")
-
 
     SET(CPACK_DEBIAN_ARCHITECTURE ${CMAKE_SYSTEM_PROCESSOR})
   ENDIF()

@@ -17,7 +17,6 @@ parts:
   application:      # part name can take whatever identifier one likes.
     # See 'snapcraft plugins'
     plugin:         cmake
-    source:         .
     build-packages:
       - libeigen3-dev
       - build-essential

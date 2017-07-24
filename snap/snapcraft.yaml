@@ -15,7 +15,7 @@ apps:
 
 parts:
   application:      # part name can take whatever identifier one likes.
-    # See 'snapcraft plugins'
+    source-type:    git
     plugin:         cmake
     build-packages:
       - libeigen3-dev
@@ -26,6 +26,4 @@ parts:
       - qtbase5-dev
       - libqt5opengl5
       - libqt5opengl5-dev
-    source:         https://github.com/OpenMapper/OpenMapperDesktop.git
-    source-type:    git
     after:          [desktop-qt5]

@@ -1,7 +1,8 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.1 FATAL_ERROR)
 PROJECT(OpenMapperDesktop)
 
-SET(CMAKE_CXX_STANDARD 14)
+# SET(CMAKE_CXX_STANDARD 17) This should be the right option though from cmake 3.8+, ubuntu 14.04 does not have this package available right now. 
+ADD_COMPILE_OPTIONS("-std=c++17")
 
 # Instruct CMake to run moc automatically when needed.
 SET(CMAKE_AUTOMOC ON)

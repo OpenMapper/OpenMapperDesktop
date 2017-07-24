@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-./bin/OpenMapperDesktop_main
+./bin/OpenMapperDesktop

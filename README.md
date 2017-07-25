@@ -22,6 +22,7 @@ Desktop GUI for the OpenMapper App
 
 ## File Tree
 
+```
 ├── build.sh
 ├── CMakeLists.txt
 ├── doc
@@ -54,7 +55,7 @@ Desktop GUI for the OpenMapper App
     ├── myglwidget.cc
     ├── window.cc
     └── window.ui
-
+```
 
 
 ## Installation

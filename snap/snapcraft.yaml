@@ -22,7 +22,6 @@ parts:
   openmapper:
     source-type:    git
     plugin:         cmake
-    qt-version:     qt5
     configflags:
       - -DCREATE_SNAP_APP=ON
     build-packages:

@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.1 FATAL_ERROR)
 PROJECT(OpenMapperDesktop)
 
-# SET(CMAKE_CXX_STANDARD 17) This should be the right option though from cmake 3.8+, ubuntu 14.04 does not have this package available right now. 
+# SET(CMAKE_CXX_STANDARD 17) This should be the right option though from cmake 3.8+, ubuntu 14.04 does not have this package available right now.
 ADD_COMPILE_OPTIONS("-std=c++17")
 
 # Instruct CMake to run moc automatically when needed.
@@ -12,7 +12,8 @@ SET(CMAKE_AUTOUIC ON)
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Set if this software should be packaged.
-OPTION(PACKAGE_APP "Create packages for the operating system" OFF)
+OPTION(PACKAGE_APP "Create packages for the operating system." OFF)
+OPTION(CREATE_SNAP_APP "Create a snap package for linux with snapcraft." OFF)
 
 ################################
 # Define Dependencies
@@ -87,6 +88,12 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME}  PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO ../bin/)
 
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION openmapper)
+
+INSTALL(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/libs/OpenMapper/thirdparty/slam_engine/ORB_SLAM2/Vocabulary DESTINATION openmapper/Vocabulary)
+
+INSTALL(DIRECTORY include/ DESTINATION include/openmapper
+        FILES_MATCHING PATTERN "*.h")
+INSTALL(DIRECTORY src/ DESTINATION openmapper/src)
 
 IF(PACKAGE_APP)
 

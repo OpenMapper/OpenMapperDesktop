@@ -1,6 +1,6 @@
 name:               openmapper-desktop
 # just for humans, typically '1.2+git' or '1.3.2'
-version:            '0.1.7'
+version:            '0.1.10'
 # 79 char long summary
 summary:            Mapping App
 description:        |
@@ -12,16 +12,17 @@ confinement:        devmode
 icon:               snap/gui/icon.png
 type:               app
 apps:
-  openmapper-gui:
-    command:        desktop-launch ${SNAP}/bin/OpenMapperDesktop
+  openmapper:
+    command:        desktop-launch ${SNAP}/openmapper/OpenMapperDesktop
     plugs:          [home, unity7, x11, camera, opengl]
 architectures:      [amd64]
 
 parts:
 # part name can take whatever identifier one likes.
-  application:
+  openmapper:
     source-type:    git
     plugin:         cmake
+    qt-version:     qt5
     configflags:
       - -DCREATE_SNAP_APP=ON
     build-packages:
@@ -31,6 +32,7 @@ parts:
       - freeglut3-dev # OpenGL
       - qt5-default
       - qtbase5-dev
+      - qtbase5-dev-tools
       - libqt5opengl5
       - libqt5opengl5-dev
       - libgl1
@@ -40,4 +42,4 @@ parts:
       - libstdc++6
       - libqt5dbus5
       - libopencv-calib3d-dev
-    after:          [desktop-qt5]
+    after:          [desktop-qt5, indicator-qt5]

@@ -20,7 +20,6 @@ OPTION(CREATE_SNAP_APP "Create a snap package for linux with snapcraft." OFF)
 ################################
 
 FIND_PACKAGE(OpenCV REQUIRED)
-#FIND_PACKAGE(OpenCV 3.0.0 REQUIRED)
 FIND_PACKAGE(OpenGL REQUIRED)
 FIND_PACKAGE(Threads REQUIRED)
 FIND_PACKAGE(OpenGL REQUIRED)

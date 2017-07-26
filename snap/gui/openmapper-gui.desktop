@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=OpenMapperDesktop
+GenericName=OpenMapperDesktop
+Comment=A mapping app for the Ubuntu Desktop
+Keywords=mapping;slam;
+Exec=OpenMapperDesktop
+Icon=${SNAP}/meta/gui/icon.png
+Terminal=true
+X-Ubuntu-Touch=false
+X-Ubuntu-Default-Department-ID=accessories
+X-Ubuntu-Splash-Color=#F5F5F5
+StartupNotify=true

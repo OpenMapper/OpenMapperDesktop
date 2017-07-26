@@ -1,7 +1,8 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.1 FATAL_ERROR)
 PROJECT(OpenMapperDesktop)
 
-SET(CMAKE_CXX_STANDARD 14)
+# SET(CMAKE_CXX_STANDARD 17) This should be the right option though from cmake 3.8+, ubuntu 14.04 does not have this package available right now.
+ADD_COMPILE_OPTIONS("-std=c++17")
 
 # Instruct CMake to run moc automatically when needed.
 SET(CMAKE_AUTOMOC ON)
@@ -11,14 +12,14 @@ SET(CMAKE_AUTOUIC ON)
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Set if this software should be packaged.
-OPTION(PACKAGE_APP "Create packages for the operating system" ON)
+OPTION(PACKAGE_APP "Create packages for the operating system." OFF)
+OPTION(CREATE_SNAP_APP "Create a snap package for linux with snapcraft." OFF)
 
 ################################
 # Define Dependencies
 ################################
 
 FIND_PACKAGE(OpenCV REQUIRED)
-#FIND_PACKAGE(OpenCV 3.0.0 REQUIRED)
 FIND_PACKAGE(OpenGL REQUIRED)
 FIND_PACKAGE(Threads REQUIRED)
 FIND_PACKAGE(OpenGL REQUIRED)
@@ -52,12 +53,7 @@ SET(OMD_LIB_SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/src)
 
 FILE(GLOB_RECURSE OMD_LIB_HEADERS "${OMD_LIB_HEADER_DIR}/*.h")
 FILE(GLOB_RECURSE OMD_LIB_SOURCES "${OMD_LIB_SRC_DIR}/*.cc")
-
-
-SET(OMD_LIB_RESOURCES
-  ${OMD_LIB_SOURCES}
-  ${OMD_LIB_HEADERS}
-)
+SET(OMD_LIB_RESOURCES ${OMD_LIB_SOURCES} ${OMD_LIB_HEADERS})
 
 ADD_EXECUTABLE(${PROJECT_NAME} ${OMD_LIB_RESOURCES})
 
@@ -90,8 +86,15 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME}  PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY_RELEASE ../bin/
     RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO ../bin/)
 
+INSTALL(TARGETS ${PROJECT_NAME} DESTINATION openmapper)
+
+INSTALL(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/libs/OpenMapper/thirdparty/slam_engine/ORB_SLAM2/Vocabulary DESTINATION openmapper)
+
+INSTALL(DIRECTORY include/ DESTINATION include/openmapper
+        FILES_MATCHING PATTERN "*.h")
+INSTALL(DIRECTORY src/ DESTINATION openmapper/src)
+
 IF(PACKAGE_APP)
-  INSTALL(TARGETS ${PROJECT_NAME} DESTINATION openmapper)
 
   IF(APPLE)
     # TODO
@@ -102,19 +105,6 @@ IF(PACKAGE_APP)
     # Dependencies
     SET(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON) # Commented as it uses the ros-lunar-opencv package as dependency instead of libopencv.
     SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.14), libgcc1 (>= 1:3.0), libgl1, libqt5core5a (>= 5.7.0), libqt5gui5 (>= 5.3.0) | libqt5gui5-gles (>= 5.3.0), libqt5opengl5 (>= 5.0.2) | libqt5opengl5-gles (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libstdc++6 (>= 6), libopencv-dev (>=2.4.0)")
-    #   freeglut3-dev,
-    #   qt5-default,
-    #   libqt5opengl5-dev,
-    #   libopencv-dev (>=2.4.0),
-    #   libc6 (>= 2.14),
-    #   libgcc1 (>= 1:3.0),
-    #   libgl1,
-    #   libqt5core5a (>= 5.7.0),
-    #   libqt5gui5-gles (>= 5.3.0),
-    #   libqt5opengl5-gles (>= 5.0.2),
-    #   libqt5widgets5 (>= 5.0.2),
-    #   libstdc++6 (>= 6)")
-
 
     SET(CPACK_DEBIAN_ARCHITECTURE ${CMAKE_SYSTEM_PROCESSOR})
   ENDIF()

@@ -6,7 +6,7 @@ Desktop GUI for the OpenMapper App
 
 | Platform  | Status   | Packaging |
 | --------- | ---------| ---------|
-| Linux     | [![Build Status](https://travis-ci.org/OpenMapper/OpenMapperDesktop.svg?branch=master)](https://travis-ci.org/OpenMapper/OpenMapperDesktop) | [![Snap Status](https://build.snapcraft.io/badge/OpenMapper/OpenMapperDesktop.svg)](https://build.snapcraft.io/user/OpenMapper/OpenMapperDesktop) (Currently failing for ARM not for AMD64) |
+| Linux     | [![Build Status](https://travis-ci.org/OpenMapper/OpenMapperDesktop.svg?branch=master)](https://travis-ci.org/OpenMapper/OpenMapperDesktop) | [![Snap Status](https://build.snapcraft.io/badge/OpenMapper/OpenMapperDesktop.svg)](https://build.snapcraft.io/user/OpenMapper/OpenMapperDesktop) (Still failing for ARM, AMD64 should be okay) |
 | macOS | [![Build Status](https://travis-ci.org/OpenMapper/OpenMapperDesktop.svg?branch=master)](https://travis-ci.org/OpenMapper/OpenMapperDesktop) | TODO |
 | Windows   | TODO | TODO |
 

@@ -88,7 +88,7 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME}  PROPERTIES
 
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION openmapper)
 
-INSTALL(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/libs/OpenMapper/thirdparty/slam_engine/ORB_SLAM2/Vocabulary DESTINATION openmapper/Vocabulary)
+INSTALL(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/libs/OpenMapper/thirdparty/slam_engine/ORB_SLAM2/Vocabulary DESTINATION openmapper)
 
 INSTALL(DIRECTORY include/ DESTINATION include/openmapper
         FILES_MATCHING PATTERN "*.h")

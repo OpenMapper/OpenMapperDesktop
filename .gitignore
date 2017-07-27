@@ -31,6 +31,10 @@ Makefile*
 
 # QtCreator
 
+
+# Kdevelop
+*.kdev4
+
 *.autosave
 
 # QtCtreator Qml
@@ -53,4 +57,3 @@ CMakeCache.txt
 # Eclipse
 .cproject
 .project
-

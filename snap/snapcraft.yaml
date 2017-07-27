@@ -8,7 +8,7 @@ description:        |
 # must be 'stable' to release into candidate/stable channels
 grade:              stable
 # use 'strict' once you have the right plugs and slots
-confinement:        strict
+confinement:        classic
 icon:               snap/gui/icon.png
 type:               app
 apps:

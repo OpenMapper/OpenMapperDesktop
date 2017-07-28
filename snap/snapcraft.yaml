@@ -8,13 +8,13 @@ description:        |
 # must be 'stable' to release into candidate/stable channels
 grade:              stable
 # use 'strict' once you have the right plugs and slots
-confinement:        classic
+confinement:        strict
 icon:               snap/gui/icon.png
 type:               app
 apps:
   openmapper:
     command:        desktop-launch ${SNAP}/openmapper/OpenMapperDesktop
-    plugs:          [home, unity7, x11, camera, opengl, network-control, account-control,  raw-usb]
+    plugs:          [home, unity7, x11, camera, opengl, network-control, account-control]
 architectures:      [amd64]
 
 parts:

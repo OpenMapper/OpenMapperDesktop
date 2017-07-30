@@ -14,7 +14,7 @@ type:               app
 apps:
   openmapper:
     command:        desktop-launch ${SNAP}/openmapper/OpenMapperDesktop
-    plugs:          [home, unity7, x11, camera, opengl, network-control, account-control]
+    plugs:          [home, unity7, x11, camera, opengl,network-bind, network-control, account-control]
 architectures:      [amd64]
 
 parts:
